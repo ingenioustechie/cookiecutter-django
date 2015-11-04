@@ -11,13 +11,22 @@ psycopg2==2.6.1
 
 # WSGI Handler
 # ------------------------------------------------
+
+{% if cookiecutter.use_gnucorn == 'y' -%}
 gevent==1.0.2
 gunicorn==19.3.0
+{%- endif %}
+
 
 # Static and Media Storage
 # ------------------------------------------------
+
+{% if cookiecutter.use_boto == 'y' -%}
 boto==2.38.0
+{%- endif %}
+
 django-storages-redux==1.3
+
 {% if cookiecutter.use_whitenoise != 'y' -%}
 Collectfast==0.2.3
 {%- endif %}
