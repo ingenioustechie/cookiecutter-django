@@ -129,6 +129,18 @@ For development, see the following for local development:
 * `Developing locally`_
 * `Developing locally using docker`_
 
+
+Deploy to OpenShift
+-------------------
+
+    $ rhc app create project_name python-3.3 --no-git -l email@example.com -p 
+    $ git remote add openshift ssh://2983479kwjkr234980c2d2c500446@project_name.rhcloud.com/~/git/project_name.git/
+    $ rhc add-cartridge mongodb-2.4/postgresql-9.2/mysql-5.5 --app project_name
+    $ ssh 2983479kwjkr234980c2d2c500446@project_name.rhcloud.com
+    [project_name.rhcloud.com 2983479kwjkr234980c2d2c500446]\> cd app-root/repo
+    [project_name.rhcloud.com repo]\> python manage.py migrate
+
+
 .. _`Developing locally`: http://cookiecutter-django.readthedocs.org/en/latest/developing-locally.html
 .. _`Developing locally using docker`: http://cookiecutter-django.readthedocs.org/en/latest/developing-locally-docker.html
 
