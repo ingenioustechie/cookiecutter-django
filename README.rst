@@ -76,12 +76,12 @@ First, get cookiecutter. Trust me, it's awesome::
 
 Now run it against this repo::
 
-    $ cookiecutter https://github.com/pydanny/cookiecutter-django.git
+    $ cookiecutter https://github.com/ingenioustechie/cookiecutter-django.git
 
 You'll be prompted for some questions, answer them, then it will create a Django project for you.
 
 
-**Warning**: After this point, change 'Daniel Greenfeld', 'pydanny', etc to your own information.
+**Warning**: After this point, change 'Daniel Greenfeld', 'ingenioustechie', etc to your own information.
 
 It prompts you for questions. Answer them::
 
@@ -124,10 +124,6 @@ Create a GitHub repo and push it there::
 
 Now take a look at your repo. Don't forget to carefully look at the generated README. Awesome, right?
 
-For development, see the following for local development:
-
-* `Developing locally`_
-* `Developing locally using docker`_
 
 
 Deploy to OpenShift
@@ -139,6 +135,12 @@ Deploy to OpenShift
     $ ssh 2983479kwjkr234980c2d2c500446@project_name.rhcloud.com
     [project_name.rhcloud.com 2983479kwjkr234980c2d2c500446]\> cd app-root/repo
     [project_name.rhcloud.com repo]\> python manage.py migrate
+
+
+For development, see the following for local development:
+
+* `Developing locally`_
+* `Developing locally using docker`_
 
 
 .. _`Developing locally`: http://cookiecutter-django.readthedocs.org/en/latest/developing-locally.html
