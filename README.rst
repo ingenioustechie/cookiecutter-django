@@ -1,4 +1,4 @@
-cookiecutter-django
+Cookiecutter Django
 =======================
 
 .. image:: https://requires.io/github/pydanny/cookiecutter-django/requirements.svg?branch=master
@@ -12,48 +12,65 @@ cookiecutter-django
 .. image:: https://badges.gitter.im/Join Chat.svg
    :target: https://gitter.im/pydanny/cookiecutter-django?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 
+Powered by Cookiecutter_, Cookiecutter Django is a framework for jumpstarting production-ready Django projects quickly.
 
-A Cookiecutter_ template for Django.
+See Troubleshooting_ for common errors and obstacles.
 
 .. _cookiecutter: https://github.com/audreyr/cookiecutter
+
+.. _Troubleshooting: https://cookiecutter-django.readthedocs.io/en/latest/troubleshooting.html
+
+.. _528: https://github.com/pydanny/cookiecutter-django/issues/528#issuecomment-212650373
 
 Features
 ---------
 
-* For Django 1.8
-* Renders Django projects with 100% test coverage
+* For Django 1.9
+* Renders Django projects with 100% starting test coverage
 * Twitter Bootstrap_ v4.0.0 - alpha_
-* End-to-end via Hitch_
-* AngularJS_
 * 12-Factor_ based settings via django-environ_
 * Optimized development and production settings
 * Registration via django-allauth_
 * Comes with custom user model ready to go.
 * Grunt build for compass and livereload
-* Basic e-mail configurations for sending emails via Mailgun_
+* Send emails via Anymail_ (using Mailgun_ by default, but switchable)
 * Media storage using Amazon S3
-* Serve static files from Amazon S3 or Whitenoise_ (optional)
-* Pre configured Celery_ (optional)
-* Integration with Maildump_ for local email testing (optional)
-* Integration with Sentry_ for error logging (optional)
-* Docker support using docker-compose_ for dev and prod
+* Docker support using docker-compose_ for development and production
 * Procfile_ for deploying to Heroku
+* Instructions for deploying to PythonAnywhere_
+* Works with Python 2.7.x or 3.5.x
+* Run tests with unittest or py.test
+
+
+Optional Integrations
+---------------------
+
+*These features can be enabled during initial project setup.*
+
+* Serve static files from Amazon S3 or Whitenoise_
+* Configuration for Celery_
+* Integration with MailHog_ for local email testing
+* Integration with Sentry_ for error logging
+* Integration with NewRelic_ for performance monitoring
+* Integration with Opbeat_ for performance monitoring
 
 .. _alpha: http://blog.getbootstrap.com/2015/08/19/bootstrap-4-alpha/
-.. _Hitch: https://github.com/hitchtest/hitchtest
 .. _Bootstrap: https://github.com/twbs/bootstrap
-.. _AngularJS: https://github.com/angular/angular.js
 .. _django-environ: https://github.com/joke2k/django-environ
 .. _12-Factor: http://12factor.net/
 .. _django-allauth: https://github.com/pennersr/django-allauth
 .. _django-avatar: https://github.com/jezdez/django-avatar/
 .. _Procfile: https://devcenter.heroku.com/articles/procfile
 .. _Mailgun: https://mailgun.com/
-.. _Whitenoise: https://whitenoise.readthedocs.org/
+.. _Whitenoise: https://whitenoise.readthedocs.io/
 .. _Celery: http://www.celeryproject.org/
-.. _Maildump: https://github.com/ThiefMaster/maildump
+.. _Anymail: https://github.com/anymail/django-anymail
+.. _MailHog: https://github.com/mailhog/MailHog
 .. _Sentry: https://getsentry.com
+.. _NewRelic: https://newrelic.com
 .. _docker-compose: https://www.github.com/docker/compose
+.. _Opbeat: https://opbeat.com/
+.. _PythonAnywhere: https://www.pythonanywhere.com/
 
 
 Constraints
@@ -70,20 +87,21 @@ Usage
 Let's pretend you want to create a Django project called "redditclone". Rather than using `startproject`
 and then editing the results to include your name, email, and various configuration issues that always get forgotten until the worst possible moment, get cookiecutter_ to do all the work.
 
-First, get cookiecutter. Trust me, it's awesome::
+First, get Cookiecutter. Trust me, it's awesome::
 
     $ pip install cookiecutter
 
 Now run it against this repo::
 
-    $ cookiecutter https://github.com/ingenioustechie/cookiecutter-django.git
+    $ cookiecutter https://github.com/muke5hy/cookiecutter-django.git
 
 You'll be prompted for some questions, answer them, then it will create a Django project for you.
 
+You'll be prompted for some values. Provide them, then a Django project will be created for you.
 
-**Warning**: After this point, change 'Daniel Greenfeld', 'ingenioustechie', etc to your own information.
+**Warning**: After this point, change 'Daniel Greenfeld', 'muke5hy', etc to your own information.
 
-It prompts you for questions. Answer them::
+Answer the prompts with your own desired options_. For example::
 
     Cloning into 'cookiecutter-django'...
     remote: Counting objects: 550, done.
@@ -92,29 +110,36 @@ It prompts you for questions. Answer them::
     Receiving objects: 100% (550/550), 127.66 KiB | 58 KiB/s, done.
     Resolving deltas: 100% (283/283), done.
     project_name [project_name]: Reddit Clone
-    repo_name [Reddit_Clone]: reddit
-    author_name [Your Name]: Daniel Greenfeld
+    project_slug [Reddit_Clone]: reddit
+    author_name [Your Name]: Daniel Roy Greenfeld
     email [Your email]: pydanny@gmail.com
     description [A short description of the project.]: A reddit clone.
     domain_name [example.com]: myreddit.com
     version [0.1.0]: 0.0.1
-    timezone [UTC]:
-    now [2015/01/13]: 2015/09/30
-    year [2015]:
+    timezone [UTC]: America/Los_Angeles
     use_whitenoise [y]: n
     use_celery [n]: y
-    use_maildump [n]: n
-    use_sentry [n]: y
+    use_mailhog [n]: n
+    use_sentry_for_error_reporting [y]: y
+    use_opbeat [n]: y
+    use_pycharm [n]: y
     windows [n]: n
-    use_python2 [n]: y
-
+    use_python2 [n]: n
+    use_docker [y]: y
+    use_heroku [n]: n
+    use_grunt [n]: y
+    Select open_source_license:
+    1 - MIT
+    2 - BSD
+    3 - Not open source
+    Choose from 1, 2, 3 [1]: 1
 
 Enter the project and take a look around::
 
     $ cd reddit/
     $ ls
 
-Create a GitHub repo and push it there::
+Create a git repo and push it there::
 
     $ git init
     $ git add .
@@ -142,20 +167,20 @@ For development, see the following for local development:
 * `Developing locally`_
 * `Developing locally using docker`_
 
+.. _options: http://cookiecutter-django.readthedocs.io/en/latest/project-generation-options.html
+.. _`Developing locally`: http://cookiecutter-django.readthedocs.io/en/latest/developing-locally.html
+.. _`Developing locally using docker`: http://cookiecutter-django.readthedocs.io/en/latest/developing-locally-docker.html
 
-.. _`Developing locally`: http://cookiecutter-django.readthedocs.org/en/latest/developing-locally.html
-.. _`Developing locally using docker`: http://cookiecutter-django.readthedocs.org/en/latest/developing-locally-docker.html
+Community
+-----------
 
-Support This Project
----------------------------
+* Got questions? **Before you ask questions anywhere else**, please post your question on `Stack Overflow`_ under the *cookiecutter-django* tag. We check there periodically for questions.
+* If you think you found a bug or want to request a feature, please open an issue_.
+* For anything else, you can chat with us on `Gitter`_.
 
-This project is maintained by volunteers. Support their efforts by spreading the word about:
-
-.. image:: https://s3.amazonaws.com/tsacademy/images/tsa-logo-250x60-transparent-01.png
-   :name: Two Scoops Academy
-   :align: center
-   :alt: Two Scoops Academy
-   :target: http://www.twoscoops.academy/
+.. _`Stack Overflow`: http://stackoverflow.com/questions/tagged/cookiecutter-django
+.. _`issue`: https://github.com/pydanny/cookiecutter-django/issues
+.. _`Gitter`: https://gitter.im/pydanny/cookiecutter-django?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 
 For Readers of Two Scoops of Django 1.8
 --------------------------------------------
@@ -196,5 +221,33 @@ If you do rename your fork, I encourage you to submit it to the following places
 Or Submit a Pull Request
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-I also accept pull requests on this, if they're small, atomic, and if they make my own project development
+We also accept pull requests on this, if they're small, atomic, and if they make our own project development
 experience better.
+
+Articles
+---------
+
+* `Development and Deployment of Cookiecutter-Django on Fedora`_ - Jan. 18, 2016
+* `Development and Deployment of Cookiecutter-Django via Docker`_ - Dec. 29, 2015
+* `How to create a Django Application using Cookiecutter and Django 1.8`_ - Sept. 12, 2015
+* `Introduction to Cookiecutter-Django`_ - Feb. 19, 2016
+* `Django and GitLab - Running Continuous Integration and tests with your FREE account`_ - May. 11, 2016
+
+Got a blog or online publication? Write about your cookiecutter-django tips and tricks, then send us a pull request with the link.
+
+.. _`Development and Deployment of Cookiecutter-Django via Docker`: https://realpython.com/blog/python/development-and-deployment-of-cookiecutter-django-via-docker
+.. _`Development and Deployment of Cookiecutter-Django on Fedora`: https://realpython.com/blog/python/development-and-deployment-of-cookiecutter-django-on-fedora/
+.. _`How to create a Django Application using Cookiecutter and Django 1.8`: http://blog.swapps.co/how-to-create-a-django-application-using-cookiecutter-and-django-1-8/#.VxKfBpMrKRs
+.. _`Introduction to Cookiecutter-Django`: http://krzysztofzuraw.com/blog/2016/django-cookiecutter.html
+.. _`Django and GitLab - Running Continuous Integration and tests with your FREE account`: http://dezoito.github.io/2016/05/11/django-gitlab-continuous-integration-phantomjs.html
+
+Support This Project
+---------------------------
+
+This project is maintained by volunteers. Support their efforts by spreading the word about:
+
+.. image:: https://s3.amazonaws.com/tsacademy/images/tsa-logo-250x60-transparent-01.png
+   :name: Two Scoops Academy
+   :align: center
+   :alt: Two Scoops Academy
+   :target: http://www.twoscoops.academy/

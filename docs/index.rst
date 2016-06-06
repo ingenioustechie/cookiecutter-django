@@ -1,6 +1,6 @@
 .. cookiecutter-django documentation master file.
 
-Welcome to cookiecutter-django's documentation!
+Welcome to Cookiecutter Django's documentation!
 ====================================================================
 
 A Cookiecutter_ template for Django.
@@ -14,16 +14,18 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-
    project-generation-options
    developing-locally
    developing-locally-docker
    settings
    linters
    live-reloading-and-sass-compilation
+   deployment-on-pythonanywhere
    deployment-on-heroku
    deployment-with-docker
    faq
+   troubleshooting
+   my-favorite-cookie
 
 Indices and tables
 ==================

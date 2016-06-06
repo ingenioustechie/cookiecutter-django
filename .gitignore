@@ -28,5 +28,16 @@ _build
 
 # Project Specific Stuff
 local_settings.py
-repo_name
+project_slug
 my_test_project/*
+
+# Generated when running py.test for the Cookiecutter Django generation tests
+.cache/
+
+# Generated when running celery beat
+celerybeat-schedule.db
+
+# Unit test / coverage reports
+.coverage
+.tox
+.cache

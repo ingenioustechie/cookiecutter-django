@@ -1,6 +1,432 @@
 # Change Log
-All enhancements and patches to cookiecutter-django will be documented in this file.
+All enhancements and patches to Cookiecutter Django will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
+
+##[2016-06-05]
+### Added
+- Configurable admin for users (@pydanny, @jayfk, @dezoito)
+
+##[2016-06-04]
+### Added
+- Let's Encrypt automation and instruction (@mjsisley and @chrisdev)
+
+##[2016-06-03]
+### Added
+- Documentation for debugging with Docker (@mjsisley)
+- Apache 2 License option in `cookiecutter.json` (@dot2dotseurat)
+- Removed unnecessary version check from `pre_gen_project.py` (@suledev)
+- Add gulp alternative as a js task runner and fix navbar style issue (@viviangb and @xpostudio4)
+
+### Deleted
+- AngularJS (@pydanny)
+- django-secure (@xpostudio4)
+
+##[2016-06-02]
+### Added
+- Added better instructions for installing postgres on Mac OS X (@dot2dotseurat )
+
+##[2016-05-22]
+### Added
+- Added instructions for copying backups from docker to host (@phiberjenz)
+- Added mailhog docker container (@noisy)
+
+##[2016-05-15]
+### Added
+- Added GitLab continuous integration article to README.rst (@dezoito)
+
+## [2016-05-13]
+### Changed
+- Update version of pyflakes to 1.2.3, django-extensions to 1.6.7 and gunicorn to 19.5.0 (@luzfcb)
+- Update version of AngularJS to 1.5.5 (@luzfcb)
+
+### Removed
+- Remove Raven 404 catch middleware. Fix #367 (@pydanny)
+
+## [2016-05-09]
+### Changed
+- Improved mailhog usage documentation on `developing-locally.rst`  (@shireenrao)
+- Replaced all `readthedocs.org` referencies to point to the new domain `readthedocs.io` (@luzfcb)
+- Update version of pyflakes (@luzfcb)
+
+## [2016-05-08]
+### Changed
+- Updated whitenoise configuration to match changes in version 3.0 (@trungdong)
+
+## [2016-05-07]
+### Added
+- Added Ubuntu 16.04 dependencies on a new dependency file `requirements.apt.xenial` (@raonyguimaraes)
+
+### Changed
+- Small improvements in ``install_os_dependencies.sh`` support new dependency file (@raonyguimaraes)
+
+## [2016-05-06]
+### Changed
+- Update version of pyflakes (@pydanny)
+
+## [2016-05-03]
+### Changed
+- Update version of Django, django-extensions, django-mailgun (@luzfcb)
+
+### [2016-05-01]
+### Changed
+- Restored the Pycharm project configuration files, that was accidentally removed in [15f350f](https://github.com/pydanny/cookiecutter-django/commit/15f350f05e2b49b4bdff0bdaa2b2ff260606e0f6) (@luzfcb @Newton715)
+
+### [2016-04-30]
+### Changed
+- Small fixes to utility scripts (@scast)
+
+### [2016-04-26]
+### Added
+- Instructions on how to install PythonAnywhere. (@hjwp)
+
+### [2016-04-25]
+### Added
+- Check to confirm that the user has a modern version of Cookiecutter. (@pydanny)
+
+### Removed
+- Removed hitch per #529 (@pydanny)
+
+### [2016-04-20]
+### Changed
+- Default to today's date in cookiecutter.json. (@audreyr)
+- Change repo_name to project_slug for clarity. (@audreyr)
+- Transform project name to lowercase for slug. (@audreyr)
+
+### [2016-04-19]
+### Added
+- "Got Questions?" section in our README.rst. Yes, there is now a cookiecutter-django tag on Stack Overflow! (@pydanny)
+
+### Changed
+- Update usage instructions with new prompts, minor cleanup (@audreyr)
+
+### [2016-04-18]
+### Added
+- removing duplication of depends_on in docker-compose.yml (@noisy)
+
+### [2016-04-17]
+### Added
+- "Built with Cookiecutter Django" badge to generated project README (@audreyr)
+- New introductory article (@krzysztofzuraw)
+
+### Changed
+- Quote consistency, single quotes everywhere! (@blopker)
+
+### [2016-04-15]
+### Changed
+- Major project generation cleanup (@jayfk)
+
+### Removed
+- Deleting unnecessary .idea dir from MAIN directory (@noisy)
+
+### [2016-04-14]
+### Added
+- Added typecheck in .pylintrc to fix pylint-django gets "no-member" error (@solvire)
+
+### Changed
+- Downgrading python-dateutil to version 2.4.2 because pykwalify==1.5.0 (required by HitchTest) uses a [pinned version of python-dateutil](https://github.com/Grokzen/pykwalify/blob/1.5.0/setup.py#L31) (@noisy)
+- Update Pillow version to 3.2.0 (security fix) (@luzfcb)
+
+### [2016-04-12]
+### Changed
+- celeryworker and celerybeat missing the correct dockerfile (@jayfk)
+
+### [2016-04-08]
+### Changed
+- Move to named docker volumes (@jayfk)
+
+### [2016-04-07]
+### Changed
+- Pycharm Support (including debugging in Docker) @noisy
+- Set the correct License @epileptic-fish
+
+### [2016-03-23]
+### Changed
+- Fixed issue on LICENSE file generation (@romanosipenko)
+- In install_python_dependencies.sh file, Fixed wrong reference to python3 if use_python2 was set to y (@luzfcb @noisy)
+
+### [2016-03-16]
+### Changed
+- Set the correct postgres username in dev.yml (@calculuscowboy)
+
+## [2016-03-14]
+### Changed
+- Enforce `repo_name` as proper python module (@catherinedevlin)
+
+## [2016-03-08]
+### Changed
+- Docker configuration now uses docker-compose format v2 (@aeikenberry)
+- Make sure that STATIC_URL != MEDIA_URL (@cdvv7788)
+- fix minor typos in project README (@menzenski)
+- Updated docker docs (@jayfk)
+
+### Added
+- Added database controls for docker (@jayfk)
+
+
+## [2016-03-05]
+### Changed
+- Update version of Django, celery, django-test-plus (@luzfcb)
+- Update version of Hitch tests dependencies: jupyter_client (@luzfcb)
+- Update 'now' date in cookiecutter.json (@luzfcb)
+- Update the usage example in README (@luzfcb)
+
+## [2016-03-01]
+### Changed
+- Update version of Django, flake8, pyflakes, pytest, factory_boy, ipdb, Werkzeug, gevent (@luzfcb)
+- Update version of Hitch tests dependencies: click, hitchserve, hitchsystem, hitchtest, ipython, psutil, python-dateutil(@luzfcb)
+- Update Tether (JS) version to 1.2.0 (@luzfcb)
+
+## [2016-02-24]
+### Added
+- Beginning support for `py.test` (@pydanny)
+
+### Changed
+- Fixed missing div closing tag for "container" on user_list.html (@Eraldo)
+
+## [2016-02-18]
+### Changed
+- The status of the registration (open or closed) is now read from the project environment instead of hardcoded in the common settings file. (@Eraldo)
+- Renamed the adapter.py file to adapters.py to match the django naming convention. (@Eraldo)
+
+
+
+## [2016-02-15]
+### Changed
+- In `users` app adapter, fix `is_open_for_signup` missing parameter (@oryx2)
+- Fixes and improvements in Hitch tests , see [#485](https://github.com/pydanny/cookiecutter-django/pull/485) (@crdoconnor)
+
+
+## [2016-02-12]
+### Changed
+- Fixed typo (@yunti)
+
+## [2016-02-07]
+### Changed
+- In `users` app, use Django 1.9 `LoginRequiredMixin` instead of django-braces implementation (@yunti)
+- Update native OS libraries of Hitch Test, because [unixpackage](https://github.com/unixpackage/unixpackage) now supports multiple versions of same Linux distribution (@crdoconnor)
+- Update AngularJS version to 1.5.0 (@luzfcb)
+- Update version of wheel, Pillow, django_coverage_plugin (@luzfcb)
+- Update version of Hitch tests dependencies: decorator, hitchselenium, ipython, ptyprocess, selenium (@luzfcb)
+- Provided options for FOSS license choices, or for private efforts, no written license (@pydanny)
+
+## [2016-02-01]
+### Changed
+- Update version of Django and django-floppyforms (@luzfcb)
+- Update version of Hitch tests dependencies: hitchpython and selenium (@luzfcb)
+
+## [2016-01-30]
+### Changed
+- Update flake8 to 2.5.2 (@luzfcb)
+
+## [2016-01-29]
+### Changed
+- Update AngularJS version to 1.4.9 (@luzfcb)
+- Update jQuery version to 2.2.0 (@luzfcb)
+- Update 'now' date in cookiecutter.json (@luzfcb)
+- Update version of boto, celery, django_coverage_plugin, django-storages-redux, flake8, gevent, gunicorn, pep8, pytest, tox, Werkzeug (@luzfcb)
+- Update version of Hitch tests dependencies: colorama, decorator, hitchpostgres, hitchpython, hitchredis, hitchselenium, hitchserve, hitchsystem, hitchtest, ipython, patool, pickleshare, psutil, python-build, requests, selenium, tblib, traitlets (@luzfcb)
+
+
+## [2016-01-26]
+### Changed
+- Fixed NEW_RELIC_APP_NAME environment variable (@jayfk)
+
+## [2016-1-18]
+### Added
+- Added .dockerignore file (@bogdal)
+- Docker tests for travis (@jayfk)
+
+### Changed
+- Removed the $-sign from allowed chars to generate the secret key (@jayfk)
+
+## [2016-01-17]
+### Added
+- Adding a section on third party articles referencing `cookiecutter-django` (@mjheo)
+
+### Changed
+- Add celerybeat db to gitignore (@originell)
+
+## [2016-01-16]
+### Added
+- Adding an explanation for having `django.contrib.sites`. (@pydanny)
+
+
+## [2016-01-13]
+### Changed
+- Update setup.py version to 1.9.1 to match Django version. (@Collederas)
+- Require Wheel 0.26.0. Needed to install certain packages on CPython 3.5+ like Pillow and psycopg2 (@audreyr)
+
+## [2016-01-09]
+### Changed
+- Upgraded django-extensions to 1.6.1 as it fixes a [JSONField bug](https://github.com/django-extensions/django-extensions/blob/master/CHANGELOG.md#161) (@burhan)
+- Upgraded Pillow to version 3.1.0 ([upstream changelog](https://github.com/python-pillow/Pillow/blob/master/CHANGES.rst#310-2016-01-04)) (@burhan)
+- Upgraded django to 1.9.1 to integrate various [bugfixes](https://docs.djangoproject.com/en/1.9/releases/1.9.1/) (@burhan)
+- Upgraded django-crispy-forms to 1.6 for [BS4 and django 1.9 compatibility fixes](https://github.com/maraujop/django-crispy-forms/blob/dev/CHANGELOG.md#160-201617) (@burhan)
+- Upgraded django-model-utils to 2.4, to enable [support for django 1.9](https://github.com/carljm/django-model-utils/blob/master/CHANGES.rst#24-2015-12-03) (@burhan)
+
+## [2016-01-08]
+### Changed
+- Fixed redis url on docker (@jayfk)
+- Fixed docker on windows (@burhan)
+
+## [2016-01-06]
+### Added
+- You can now enable or disable user registration using the ACCOUNT_ALLOW_REGISTRATION setting. (@ddiazpinto)
+
+### Changed
+- Use Postgres 9.5 on docker (@jayfk)
+
+## [2016-01-04]
+### Added
+- Add Tether.js because [is needed](http://v4-alpha.getbootstrap.com/components/tooltips/#overview) for proper positioning of Bootstrap tooltips (@EricZaporzan)
+
+### Changed
+- Minor fixes in the docker documentation (@jayfk)
+- Made @burhan a core committer (@pydanny)
+
+## [2015-12-30]
+### Changed
+- Fixed a bug where the navbar was not displayed correctly (@jvanbrug)
+
+## [2015-12-21]
+### Changed
+- Added sentry logger to celery config (@jayfk)
+
+## [2015-12-16]
+- Update preview 4xx error pages to accept `exception` argument (@theskumar)
+
+## [2015-12-15]
+### Changed
+- Fix celery worker app name in Procfile (@stepmr)
+
+## [2015-12-13]
+### Changed
+- Bumped Django to 1.9 (@areski)
+- Support opbeat logging with celery (@stepmr)
+- Update runtime.txt with PY2 support (@stepmr)
+
+## [2015-12-12]
+### Added
+- Celery worker to Heroku procfile (@stepmr)
+
+## [2015-12-11]
+### Changed
+- Fixed issue #436 - cookiecutter variable name was renamed from `celery_support` to `use_celery` in `tests/engine.py` (@luzfcb @otakucode)
+- Updated Heroku runtime.txt for python 3.5.1 (@yunti)
+
+## [2015-12-06]
+### Changed
+- Reorganization of contributors (@burhan)
+
+## [2015-12-01]
+### Changed
+- Update documentation to include the installation os dependencies before development requirements (@failsafe86)
+
+## [2015-11-29]
+### Changed
+- Update version of click and python-build (@luzfcb)
+
+## [2015-11-25]
+### Changed
+- Update version of psutil, ipython (@luzfcb)
+- Update version of gunicorn (@audreyr)
+- Remove debugging tools from non-generated part of cookiecutter-django, since those are personal prefs (@audreyr)
+- Update version of Django in setup.py (@luzfcb)
+
+## [2015-11-24]
+### Changed
+- Update version of Django, coverage and click (@luzfcb)
+- Fixed configuration for Celery in local.py. (@luzfcb @hackebrot)
+
+## [2015-11-23]
+### Changed
+- Update AngularJS version to 1.4.8 (@luzfcb)
+- Update version of cookiecutter, pytest, tox, whitenoise, django-test-plus, django_coverage_plugin, Werkzeug, hitchserve, tornado, unixpackage (@luzfcb)
+- Update 'now' date in cookiecutter.json (@luzfcb)
+- `sh` package version pinned to `1.11` (@luzfcb)
+
+## [2015-11-22]
+### Changed
+- Move div class unquote outside the django if tag (@jvanbrug)
+- Changed gevent to `1.1rc1` for python 3 users (@jondelmil / @jayfk)
+
+## [2015-11-20]
+### Changed
+- Using python 3.5 on Heroku/Travis (@bogdal)
+- Fixed typo in README (@tedmiston)
+
+## [2015-11-18]
+### Added
+- Mailhog as a replacement for Maildump (@keybits)
+
+### Removed
+- Maildump because it didn't support Python 3 (@keybits)
+
+## [2015-11-17]
+### Added
+- initial configuration to support opbeat (@burhan)
+
+### Removed
+- Took `*.pyc` out of .gitignore, because it's already covered by `*.py[cod]` (@audreyr)
+
+## [2015-11-16]
+### Changed
+- Cleanup of main README (@burhan)
+
+## [2015-11-15]
+### Added
+- Added `UserFactory` for users.User tests (@ad-m)
+
+## [2015-11-12]
+### Changed
+- Update version of django-allauth (@yunti)
+- Added a warning in README.rst: ```repo_name must be a valid Python module``` @cdvv7788
+
+### Removed
+- remove ```{% load url from future %}``` in templates - deprecated in django 1.9 (@yunti)
+
+## [2015-11-11]
+### Added
+- Added django_coverage_plugin to measure Django template coverage (@audreyr)
+
+## [2015-11-09]
+### Changed
+- Now using py.test for our test suite!! (@hackebrot)
+- Python version in travis.yml is now correct for the selected version of Django (@show0k)
+
+## [2015-11-08]
+### Changed
+- bump django-extensions version (@garrypolley)
+
+## [2015-11-07]
+### Added
+- newrelic support (@amjith)
+- DJANGO_SENTRY_DSN to env.example (@jayfk)
+
+### Changed
+- Made `post_gen_hook.set_secret_key()` only changes one CHANGEME!!! at a time. (@pydanny)
+- Fixed an error where celery couldn't load the sentry DSN from settings (@jayfk)
+- Renamed ADMIN_URL to DJANGO_ADMIN_URL in env.example (@ChrisPappalardo)
+
+## [2015-11-06]
+### Added
+- \*tests\* to `.coveragerc`, because including it is cheating! (@pydanny)
+- Binaryornot to cookiecutter-django's own tests because otherwise Python 3 blows up (@audreyr)
+
+### Changed
+- `.travis.yml` configuration to support Python 3.4 and 3.5 (@pydanny)
+- `.gitignore` configuration so py.test cache files don't show up in git status.
+
+## [2015-11-05]
+### Changed
+- Update version of django-extensions (@luzfcb)
+- Fix gevent requirement for Python 3 (@mcho421)
+
+## [2015-11-04]
+### Changed
+- Update version of Django, cookiecutter, celery, coverage, django-mailgun, django-redis, factory_boy, flake8, pytest and pytz (@luzfcb)
+- Update AngularJS version to 1.4.7 (@luzfcb)
+- Update 'now' date in cookiecutter.json (@luzfcb)
 
 ## [2015-10-28]
 ### Changed
@@ -57,7 +483,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [2015-10-11]
 ### Changed
-- Fixed raven issue on development (#302) (@jazztpt )
+- Fixed raven issue on development (#302) (@jazztpt)
 
 ## [2015-10-05]
 ### Changed
@@ -153,7 +579,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Styles that already exist in Bootstrap 4 (or 3) (@audreyr)
 
 ### Changed
-- Fix issue #296 - change login.html to use [get_providers](https://github.com/pennersr/django-allauth/blob/master/allauth/socialaccount/templatetags/socialaccount.py#L84-L93) templatetag because ``allauth.socialaccount`` context processor now is [deprecated](http://django-allauth.readthedocs.org/en/latest/changelog.html#from-0-21-0) (@luzfcb)
+- Fix issue #296 - change login.html to use [get_providers](https://github.com/pennersr/django-allauth/blob/master/allauth/socialaccount/templatetags/socialaccount.py#L84-L93) templatetag because ``allauth.socialaccount`` context processor now is [deprecated](http://django-allauth.readthedocs.io/en/latest/changelog.html#from-0-21-0) (@luzfcb)
 
 ## [2015-09-09]
 ### Added

@@ -16,8 +16,8 @@ to run docker (with compose) on production.
 
 Prerequisites:
 
-* docker (tested with 1.8)
-* docker-compose (tested with 0.4)
+* docker (at least 1.10)
+* docker-compose (at least 1.6)
 
 Before you start, check out the `docker-compose.yml` file in the root of this project. This is where each component
 of this application gets its configuration from. It consists of a `postgres` service that runs the database, `redis`
@@ -41,7 +41,7 @@ This pass all incoming requests on `nginx-proxy`_ to the nginx service your appl
 
 .. _nginx-proxy: https://github.com/jwilder/nginx-proxy
 
-Postgres is saving its database files to `/data/{{cookiecutter.repo_name}}/postgres` by default. Change that if you wan't
+Postgres is saving its database files to the `postgres_data` volume by default. Change that if you wan't
 something else and make sure to make backups since this is not done automatically.
 
 To get started, pull your code from source control (don't forget the `.env` file) and change to your projects root
@@ -67,7 +67,7 @@ To create a superuser, run::
 
 If you need a shell, run::
 
-   docker-compose run django python manage.py shell_plus
+   docker-compose run django python manage.py shell
 
 To get an output of all running containers.
 
@@ -89,19 +89,19 @@ it needs to do is to run `docker-compose up` in your projects root directory.
 
 If you are using `supervisor`, you can use this file as a starting point::
 
-    [program:{{cookiecutter.repo_name}}]
+    [program:{{cookiecutter.project_slug}}]
     command=docker-compose up
-    directory=/path/to/{{cookiecutter.repo_name}}
+    directory=/path/to/{{cookiecutter.project_slug}}
     redirect_stderr=true
     autostart=true
     autorestart=true
     priority=10
 
 
-Place it in `/etc/supervisor/conf.d/{{cookiecutter.repo_name}}.conf` and run::
+Place it in `/etc/supervisor/conf.d/{{cookiecutter.project_slug}}.conf` and run::
 
     supervisorctl reread
-    supervisorctl start {{cookiecutter.repo_name}}
+    supervisorctl start {{cookiecutter.project_slug}}
 
 To get the status, run::
 
@@ -110,3 +110,47 @@ To get the status, run::
 If you have errors, you can always check your stack with `docker-compose`. Switch to your projects root directory and run::
 
     docker-compose ps
+
+If you are using certbot for https, you must do the following before running anything with docker-compose:
+
+Replace dhparam.pem.example with a generated dhparams.pem file before running anything with docker-compose. You can generate this on ubuntu or OS X by running the following in the project root:
+
+::
+
+    $ openssl dhparam -out /path/to/project/compose/nginx/dhparams.pem 2048
+
+If you would like to add additional subdomains to your certificate, you must add additional parameters to the certbot command in the `docker-compose.yml` file:
+
+Replace:
+
+::
+
+    command: bash -c "sleep 6 && certbot certonly -n --standalone -d {{ cookiecutter.domain_name }} --text --agree-tos --email mjsisley@relawgo.com --server https://acme-v01.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --keep-until-expiring --standalone-supported-challenges http-01"
+
+With:
+
+::
+
+    command: bash -c "sleep 6 && certbot certonly -n --standalone -d {{ cookiecutter.domain_name }} -d www.{{ cookiecutter.domain_name }} -d etc.{{ cookiecutter.domain_name }} --text --agree-tos --email {{ cookiecutter.email }} --server https://acme-v01.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --keep-until-expiring --standalone-supported-challenges http-01"
+
+Please be cognizant of Certbot/Letsencrypt certificate requests limits when getting this set up. The provide a test server that does not count against the limit while you are getting set up.
+
+The certbot certificates expire after 3 months.
+If you would like to set up autorenewal of your certificates, the following commands can be put into a bash script:
+
+::
+
+    #!/bin/bash
+    cd <project directory>
+    docker-compose run certbot bash -c "sleep 6 && certbot certonly --standalone -d {{ cookiecutter.domain_name }} --text --agree-tos --email {{ cookiecutter.email }} --server https://acme-v01.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --keep-until-expiring --standalone-supported-challenges http-01"
+    docker exec pearl_nginx_1 nginx -s reload
+
+And then set a cronjob by running `crontab -e` and placing in it (period can be adjusted as desired):
+
+0 4 * * 1 /path/to/bashscript/renew_certbot.sh
+
+
+
+
+
+
